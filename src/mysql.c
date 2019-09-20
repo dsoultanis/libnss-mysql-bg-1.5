@@ -245,8 +245,9 @@ _nss_mysql_connect_sql (MYSQL_RES **mresult)
           DSRETURN (NSS_UNAVAIL)
         }
       ci.valid = ntrue;
-      ci.link.reconnect = 0; /* Safety: We can't let MySQL assume socket is
-                                still valid; see _nss_mysql_validate_socket */
+      /* Removed cause build was failing in mariadb
+      //ci.link.reconnect = 0; 
+      /* Safety: We can't let MySQL assume socket is still valid; see _nss_mysql_validate_socket */
       DSRETURN (NSS_SUCCESS)
     }
   _nss_mysql_log (LOG_ALERT, "Connection to server '%s' failed: %s",
